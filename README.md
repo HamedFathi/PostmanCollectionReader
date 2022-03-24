@@ -2,7 +2,7 @@
 
 > Postman is an API platform for building and using APIs. Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.
 
-It library helps you to read a `Postman Collection v2.1` json file in C#.
+This library helps you to read a `Postman Collection v2.1` json file in C#.
 
 ### [Nuget](https://www.nuget.org/packages/PostmanCollectionReader)
 
