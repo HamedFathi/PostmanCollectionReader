@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostmanCollectionReader", "PostmanCollectionReader\PostmanCollectionReader.csproj", "{3FD8FB80-920B-43D6-8F91-2943CAC4C181}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FD8FB80-920B-43D6-8F91-2943CAC4C181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FD8FB80-920B-43D6-8F91-2943CAC4C181}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FD8FB80-920B-43D6-8F91-2943CAC4C181}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FD8FB80-920B-43D6-8F91-2943CAC4C181}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9AAFC41C-1825-4F5C-91DA-0197E1F84C2A}
+	EndGlobalSection
+EndGlobal
