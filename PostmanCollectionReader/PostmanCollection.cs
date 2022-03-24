@@ -11,10 +11,10 @@ namespace PostmanCollectionReader
         [JsonProperty("auth")]
         public Auth Auth { get; set; }
 
-        [JsonProperty("event", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("event", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<Event> Event { get; set; }
 
-        [JsonProperty("info")]
+        [JsonProperty("info", Required = Required.Always)]
         public Information Info { get; set; }
 
         /// <summary>
@@ -22,13 +22,13 @@ namespace PostmanCollectionReader
         /// to a single API endpoint. Each Item has one request and may have multiple API responses
         /// associated with it.
         /// </summary>
-        [JsonProperty("item")]
+        [JsonProperty("item", Required = Required.Always)]
         public List<Items> Item { get; set; }
 
-        [JsonProperty("protocolProfileBehavior", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("protocolProfileBehavior", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, object> ProtocolProfileBehavior { get; set; }
 
-        [JsonProperty("variable", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("variable", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<Variable> Variable { get; set; }
     }
 
@@ -40,48 +40,48 @@ namespace PostmanCollectionReader
         /// <summary>
         /// The attributes for API Key Authentication.
         /// </summary>
-        [JsonProperty("apikey", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("apikey", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<ApikeyElement> Apikey { get; set; }
 
         /// <summary>
         /// The attributes for [AWS
         /// Auth](http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html).
         /// </summary>
-        [JsonProperty("awsv4", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("awsv4", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<ApikeyElement> Awsv4 { get; set; }
 
         /// <summary>
         /// The attributes for [Basic
         /// Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication).
         /// </summary>
-        [JsonProperty("basic", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("basic", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<ApikeyElement> Basic { get; set; }
 
         /// <summary>
         /// The helper attributes for [Bearer Token
         /// Authentication](https://tools.ietf.org/html/rfc6750)
         /// </summary>
-        [JsonProperty("bearer", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("bearer", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<ApikeyElement> Bearer { get; set; }
 
         /// <summary>
         /// The attributes for [Digest
         /// Authentication](https://en.wikipedia.org/wiki/Digest_access_authentication).
         /// </summary>
-        [JsonProperty("digest", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("digest", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<ApikeyElement> Digest { get; set; }
 
         /// <summary>
         /// The attributes for [Akamai EdgeGrid
         /// Authentication](https://developer.akamai.com/legacy/introduction/Client_Auth.html).
         /// </summary>
-        [JsonProperty("edgegrid", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("edgegrid", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<ApikeyElement> Edgegrid { get; set; }
 
         /// <summary>
         /// The attributes for [Hawk Authentication](https://github.com/hueniverse/hawk)
         /// </summary>
-        [JsonProperty("hawk", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("hawk", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<ApikeyElement> Hawk { get; set; }
 
         [JsonProperty("noauth")]
@@ -91,22 +91,22 @@ namespace PostmanCollectionReader
         /// The attributes for [NTLM
         /// Authentication](https://msdn.microsoft.com/en-us/library/cc237488.aspx)
         /// </summary>
-        [JsonProperty("ntlm", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("ntlm", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<ApikeyElement> Ntlm { get; set; }
 
         /// <summary>
         /// The attributes for [OAuth2](https://oauth.net/1/)
         /// </summary>
-        [JsonProperty("oauth1", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("oauth1", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<ApikeyElement> Oauth1 { get; set; }
 
         /// <summary>
         /// Helper attributes for [OAuth2](https://oauth.net/2/)
         /// </summary>
-        [JsonProperty("oauth2", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("oauth2", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<ApikeyElement> Oauth2 { get; set; }
 
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Required.Always)]
         public AuthType Type { get; set; }
     }
 
@@ -116,10 +116,10 @@ namespace PostmanCollectionReader
     /// </summary>
     public partial class ApikeyElement
     {
-        [JsonProperty("key")]
+        [JsonProperty("key", Required = Required.Always)]
         public string Key { get; set; }
 
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("type", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
 
         [JsonProperty("value")]
@@ -137,22 +137,22 @@ namespace PostmanCollectionReader
         /// <summary>
         /// Indicates whether the event is disabled. If absent, the event is assumed to be enabled.
         /// </summary>
-        [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("disabled", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Disabled { get; set; }
 
         /// <summary>
         /// A unique identifier for the enclosing event.
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("id", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
         /// <summary>
         /// Can be set to `test` or `prerequest` for test scripts or pre-request scripts respectively.
         /// </summary>
-        [JsonProperty("listen")]
+        [JsonProperty("listen", Required = Required.Always)]
         public string Listen { get; set; }
 
-        [JsonProperty("script", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("script", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Script Script { get; set; }
     }
 
@@ -162,28 +162,28 @@ namespace PostmanCollectionReader
     /// </summary>
     public partial class Script
     {
-        [JsonProperty("exec", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("exec", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Host? Exec { get; set; }
 
         /// <summary>
         /// A unique, user defined identifier that can  be used to refer to this script from requests.
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("id", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
         /// <summary>
         /// Script name
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("name", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
-        [JsonProperty("src", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("src", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Url? Src { get; set; }
 
         /// <summary>
         /// Type of the script. E.g: 'text/javascript'
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("type", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
     }
 
@@ -193,60 +193,60 @@ namespace PostmanCollectionReader
         /// Contains the URL fragment (if any). Usually this is not transmitted over the network, but
         /// it could be useful to store this in some cases.
         /// </summary>
-        [JsonProperty("hash", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("hash", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Hash { get; set; }
 
         /// <summary>
         /// The host for the URL, E.g: api.yourdomain.com. Can be stored as a string or as an array
         /// of strings.
         /// </summary>
-        [JsonProperty("host", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("host", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Host? Host { get; set; }
 
-        [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("path", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public UrlPath? Path { get; set; }
 
         /// <summary>
         /// The port number present in this URL. An empty value implies 80/443 depending on whether
         /// the protocol field contains http/https.
         /// </summary>
-        [JsonProperty("port", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("port", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Port { get; set; }
 
         /// <summary>
         /// The protocol associated with the request, E.g: 'http'
         /// </summary>
-        [JsonProperty("protocol", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("protocol", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Protocol { get; set; }
 
         /// <summary>
         /// An array of QueryParams, which is basically the query string part of the URL, parsed into
         /// separate variables
         /// </summary>
-        [JsonProperty("query", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("query", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<QueryParam> Query { get; set; }
 
         /// <summary>
         /// The string representation of the request URL, including the protocol, host, path, hash,
         /// query parameter(s) and path variable(s).
         /// </summary>
-        [JsonProperty("raw", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("raw", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Raw { get; set; }
 
         /// <summary>
         /// Postman supports path variables with the syntax `/path/:variableName/to/somewhere`. These
         /// variables are stored in this field.
         /// </summary>
-        [JsonProperty("variable", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("variable", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<Variable> Variable { get; set; }
     }
 
     public partial class PathClass
     {
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("type", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
 
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("value", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Value { get; set; }
     }
 
@@ -258,7 +258,7 @@ namespace PostmanCollectionReader
         /// <summary>
         /// If set to true, the current query parameter will not be sent with the request.
         /// </summary>
-        [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("disabled", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Disabled { get; set; }
 
         [JsonProperty("key")]
@@ -273,7 +273,7 @@ namespace PostmanCollectionReader
         /// <summary>
         /// The content of the description goes here, as a raw string.
         /// </summary>
-        [JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("content", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Content { get; set; }
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace PostmanCollectionReader
         /// The type is used to correctly render the description when generating documentation, or in
         /// the Postman app.
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("type", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
 
         /// <summary>
@@ -305,39 +305,39 @@ namespace PostmanCollectionReader
         [JsonProperty("description")]
         public DescriptionUnion? Description { get; set; }
 
-        [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("disabled", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Disabled { get; set; }
 
         /// <summary>
         /// A variable ID is a unique user-defined value that identifies the variable within a
         /// collection. In traditional terms, this would be a variable name.
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("id", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
         /// <summary>
         /// A variable key is a human friendly value that identifies the variable within a
         /// collection. In traditional terms, this would be a variable name.
         /// </summary>
-        [JsonProperty("key", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("key", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Key { get; set; }
 
         /// <summary>
         /// Variable name
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("name", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
         /// <summary>
         /// When set to true, indicates that this variable has been set by Postman
         /// </summary>
-        [JsonProperty("system", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("system", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? System { get; set; }
 
         /// <summary>
         /// A variable may have multiple types. This field specifies the type of the variable.
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("type", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public VariableType? Type { get; set; }
 
         /// <summary>
@@ -360,7 +360,7 @@ namespace PostmanCollectionReader
         /// implies that is a different collection than it was originally.
         /// *Note: This field exists for compatibility reasons with Collection Format V1.*
         /// </summary>
-        [JsonProperty("_postman_id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("_postman_id", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string PostmanId { get; set; }
 
         [JsonProperty("description")]
@@ -371,17 +371,17 @@ namespace PostmanCollectionReader
         /// to a value that would allow you to easily identify this collection among a bunch of other
         /// collections, as such outlining its usage or content.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Required.Always)]
         public string Name { get; set; }
 
         /// <summary>
         /// This should ideally hold a link to the Postman schema that is used to validate this
         /// collection. E.g: https://schema.getpostman.com/collection/v1
         /// </summary>
-        [JsonProperty("schema")]
+        [JsonProperty("schema", Required = Required.Always)]
         public string Schema { get; set; }
 
-        [JsonProperty("version", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("version", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public CollectionVersion? Version { get; set; }
     }
 
@@ -390,7 +390,7 @@ namespace PostmanCollectionReader
         /// <summary>
         /// A human friendly identifier to make sense of the version numbers. E.g: 'beta-3'
         /// </summary>
-        [JsonProperty("identifier", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("identifier", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(MinMaxLengthCheckConverter))]
         public string Identifier { get; set; }
 
@@ -398,7 +398,7 @@ namespace PostmanCollectionReader
         /// Increment this number if you make changes to the collection that changes its behaviour.
         /// E.g: Removing or adding new test scripts. (partly or completely).
         /// </summary>
-        [JsonProperty("major")]
+        [JsonProperty("major", Required = Required.Always)]
         public long Major { get; set; }
 
         [JsonProperty("meta")]
@@ -408,13 +408,13 @@ namespace PostmanCollectionReader
         /// You should increment this number if you make changes that will not break anything that
         /// uses the collection. E.g: removing a folder.
         /// </summary>
-        [JsonProperty("minor")]
+        [JsonProperty("minor", Required = Required.Always)]
         public long Minor { get; set; }
 
         /// <summary>
         /// Ideally, minor changes to a collection should result in the increment of this number.
         /// </summary>
-        [JsonProperty("patch")]
+        [JsonProperty("patch", Required = Required.Always)]
         public long Patch { get; set; }
     }
 
@@ -431,13 +431,13 @@ namespace PostmanCollectionReader
         [JsonProperty("description")]
         public DescriptionUnion? Description { get; set; }
 
-        [JsonProperty("event", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("event", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<Event> Event { get; set; }
 
         /// <summary>
         /// A unique ID that is used to identify collections internally
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("id", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
         /// <summary>
@@ -446,19 +446,19 @@ namespace PostmanCollectionReader
         /// A folder's friendly name is defined by this field. You would want to set this field to a
         /// value that would allow you to easily identify this folder.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("name", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
-        [JsonProperty("protocolProfileBehavior", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("protocolProfileBehavior", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, object> ProtocolProfileBehavior { get; set; }
 
-        [JsonProperty("request", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("request", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public RequestUnion? Request { get; set; }
 
-        [JsonProperty("response", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("response", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<Response> Response { get; set; }
 
-        [JsonProperty("variable", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("variable", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<Variable> Variable { get; set; }
 
         [JsonProperty("auth")]
@@ -468,7 +468,7 @@ namespace PostmanCollectionReader
         /// Items are entities which contain an actual HTTP request, and sample responses attached to
         /// it. Folders may contain many items.
         /// </summary>
-        [JsonProperty("item", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("item", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<Items> Item { get; set; }
     }
 
@@ -480,22 +480,22 @@ namespace PostmanCollectionReader
         [JsonProperty("body")]
         public Body Body { get; set; }
 
-        [JsonProperty("certificate", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("certificate", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Certificate Certificate { get; set; }
 
         [JsonProperty("description")]
         public DescriptionUnion? Description { get; set; }
 
-        [JsonProperty("header", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("header", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public HeaderUnion? Header { get; set; }
 
-        [JsonProperty("method", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("method", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Method { get; set; }
 
-        [JsonProperty("proxy", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("proxy", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public ProxyConfig Proxy { get; set; }
 
-        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("url", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Url? Url { get; set; }
     }
 
@@ -507,40 +507,40 @@ namespace PostmanCollectionReader
         /// <summary>
         /// When set to true, prevents request body from being sent.
         /// </summary>
-        [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("disabled", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Disabled { get; set; }
 
-        [JsonProperty("file", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("file", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public File File { get; set; }
 
-        [JsonProperty("formdata", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("formdata", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<FormParameter> Formdata { get; set; }
 
-        [JsonProperty("graphql", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("graphql", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, object> Graphql { get; set; }
 
         /// <summary>
         /// Postman stores the type of data associated with this request in this field.
         /// </summary>
-        [JsonProperty("mode", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("mode", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Mode? Mode { get; set; }
 
         /// <summary>
         /// Additional configurations and options set for various body modes.
         /// </summary>
-        [JsonProperty("options", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("options", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, object> Options { get; set; }
 
-        [JsonProperty("raw", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("raw", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Raw { get; set; }
 
-        [JsonProperty("urlencoded", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("urlencoded", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<UrlEncodedParameter> Urlencoded { get; set; }
     }
 
     public partial class File
     {
-        [JsonProperty("content", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("content", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Content { get; set; }
 
         [JsonProperty("src")]
@@ -552,7 +552,7 @@ namespace PostmanCollectionReader
         /// <summary>
         /// Override Content-Type header of this form data entity.
         /// </summary>
-        [JsonProperty("contentType", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("contentType", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string ContentType { get; set; }
 
         [JsonProperty("description")]
@@ -561,16 +561,16 @@ namespace PostmanCollectionReader
         /// <summary>
         /// When set to true, prevents this form data entity from being sent.
         /// </summary>
-        [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("disabled", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Disabled { get; set; }
 
-        [JsonProperty("key")]
+        [JsonProperty("key", Required = Required.Always)]
         public string Key { get; set; }
 
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("type", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public FormParameterType? Type { get; set; }
 
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("value", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Value { get; set; }
 
         [JsonProperty("src")]
@@ -582,13 +582,13 @@ namespace PostmanCollectionReader
         [JsonProperty("description")]
         public DescriptionUnion? Description { get; set; }
 
-        [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("disabled", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Disabled { get; set; }
 
-        [JsonProperty("key")]
+        [JsonProperty("key", Required = Required.Always)]
         public string Key { get; set; }
 
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("value", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Value { get; set; }
     }
 
@@ -600,31 +600,31 @@ namespace PostmanCollectionReader
         /// <summary>
         /// An object containing path to file certificate, on the file system
         /// </summary>
-        [JsonProperty("cert", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("cert", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Cert Cert { get; set; }
 
         /// <summary>
         /// An object containing path to file containing private key, on the file system
         /// </summary>
-        [JsonProperty("key", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("key", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Key Key { get; set; }
 
         /// <summary>
         /// A list of Url match pattern strings, to identify Urls this certificate can be used for.
         /// </summary>
-        [JsonProperty("matches", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("matches", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Matches { get; set; }
 
         /// <summary>
         /// A name for the certificate for user reference
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("name", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
         /// <summary>
         /// The passphrase for the certificate
         /// </summary>
-        [JsonProperty("passphrase", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("passphrase", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Passphrase { get; set; }
     }
 
@@ -665,19 +665,19 @@ namespace PostmanCollectionReader
         /// <summary>
         /// If set to true, the current header will not be sent with requests.
         /// </summary>
-        [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("disabled", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Disabled { get; set; }
 
         /// <summary>
         /// This holds the LHS of the HTTP Header, e.g ``Content-Type`` or ``X-Custom-Header``
         /// </summary>
-        [JsonProperty("key")]
+        [JsonProperty("key", Required = Required.Always)]
         public string Key { get; set; }
 
         /// <summary>
         /// The value (or the RHS) of the Header is stored in this field.
         /// </summary>
-        [JsonProperty("value")]
+        [JsonProperty("value", Required = Required.Always)]
         public string Value { get; set; }
     }
 
@@ -690,31 +690,31 @@ namespace PostmanCollectionReader
         /// <summary>
         /// When set to true, ignores this proxy configuration entity
         /// </summary>
-        [JsonProperty("disabled", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("disabled", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Disabled { get; set; }
 
         /// <summary>
         /// The proxy server host
         /// </summary>
-        [JsonProperty("host", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("host", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Host { get; set; }
 
         /// <summary>
         /// The Url match for which the proxy config is defined
         /// </summary>
-        [JsonProperty("match", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("match", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Match { get; set; }
 
         /// <summary>
         /// The proxy server port
         /// </summary>
-        [JsonProperty("port", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("port", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public long? Port { get; set; }
 
         /// <summary>
         /// The tunneling details for the proxy config
         /// </summary>
-        [JsonProperty("tunnel", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("tunnel", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Tunnel { get; set; }
     }
 
@@ -729,10 +729,10 @@ namespace PostmanCollectionReader
         /// <summary>
         /// The numerical response code, example: 200, 201, 404, etc.
         /// </summary>
-        [JsonProperty("code", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("code", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public long? Code { get; set; }
 
-        [JsonProperty("cookie", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("cookie", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<Cookie> Cookie { get; set; }
 
         [JsonProperty("header")]
@@ -742,10 +742,10 @@ namespace PostmanCollectionReader
         /// A unique, user defined identifier that can  be used to refer to this response from
         /// requests.
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("id", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Id { get; set; }
 
-        [JsonProperty("originalRequest", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("originalRequest", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public RequestUnion? OriginalRequest { get; set; }
 
         /// <summary>
@@ -758,7 +758,7 @@ namespace PostmanCollectionReader
         /// <summary>
         /// The response status, e.g: '200 OK'
         /// </summary>
-        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("status", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Status { get; set; }
 
         /// <summary>
@@ -777,68 +777,68 @@ namespace PostmanCollectionReader
         /// <summary>
         /// The domain for which this cookie is valid.
         /// </summary>
-        [JsonProperty("domain")]
+        [JsonProperty("domain", Required = Required.Always)]
         public string Domain { get; set; }
 
         /// <summary>
         /// When the cookie expires.
         /// </summary>
-        [JsonProperty("expires", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("expires", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Expires? Expires { get; set; }
 
         /// <summary>
         /// Custom attributes for a cookie go here, such as the [Priority
         /// Field](https://code.google.com/p/chromium/issues/detail?id=232693)
         /// </summary>
-        [JsonProperty("extensions", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("extensions", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<object> Extensions { get; set; }
 
         /// <summary>
         /// True if the cookie is a host-only cookie. (i.e. a request's URL domain must exactly match
         /// the domain of the cookie).
         /// </summary>
-        [JsonProperty("hostOnly", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("hostOnly", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? HostOnly { get; set; }
 
         /// <summary>
         /// Indicates if this cookie is HTTP Only. (if True, the cookie is inaccessible to
         /// client-side scripts)
         /// </summary>
-        [JsonProperty("httpOnly", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("httpOnly", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? HttpOnly { get; set; }
 
-        [JsonProperty("maxAge", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("maxAge", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string MaxAge { get; set; }
 
         /// <summary>
         /// This is the name of the Cookie.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("name", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
 
         /// <summary>
         /// The path associated with the Cookie.
         /// </summary>
-        [JsonProperty("path")]
+        [JsonProperty("path", Required = Required.Always)]
         public string Path { get; set; }
 
         /// <summary>
         /// Indicates if the 'secure' flag is set on the Cookie, meaning that it is transmitted over
         /// secure connections only. (typically HTTPS)
         /// </summary>
-        [JsonProperty("secure", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("secure", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Secure { get; set; }
 
         /// <summary>
         /// True if the cookie is a session cookie.
         /// </summary>
-        [JsonProperty("session", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("session", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public bool? Session { get; set; }
 
         /// <summary>
         /// The value of the Cookie.
         /// </summary>
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("value", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Value { get; set; }
     }
 
