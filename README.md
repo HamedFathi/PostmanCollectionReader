@@ -4,7 +4,7 @@
 
 It library helps you to read a `Postman Collection v2.1` json file in C#.
 
-### [Nuget](https://www.nuget.org/packages/DotLiquidExtended)
+### [Nuget](https://www.nuget.org/packages/PostmanCollectionReader)
 
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://opensource.org/licenses/MIT)
 ![Nuget](https://img.shields.io/nuget/v/PostmanCollectionReader)
@@ -24,5 +24,5 @@ using PostmanCollectionReader;
 var postmanCollection = PostmanCollection.FromJson(jsonString);
 ```
 
-<hr/>
+---
 **Based on `Postman Collection Format v2.1.0 Draft 04` schema and [QuickType](https://app.quicktype.io/).**
