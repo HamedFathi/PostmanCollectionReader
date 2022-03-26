@@ -568,7 +568,7 @@ namespace PostmanCollectionReader
         public string Key { get; set; }
 
         [JsonProperty("type", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        public FormParameterType? Type { get; set; }
+        public string Type { get; set; }
 
         [JsonProperty("value", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Value { get; set; }
@@ -783,8 +783,8 @@ namespace PostmanCollectionReader
         /// <summary>
         /// When the cookie expires.
         /// </summary>
-        [JsonProperty("expires", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        public Expires? Expires { get; set; }
+        [JsonProperty("expires")]
+        public string Expires { get; set; }
 
         /// <summary>
         /// Custom attributes for a cookie go here, such as the [Priority
@@ -848,8 +848,6 @@ namespace PostmanCollectionReader
     /// A variable may have multiple types. This field specifies the type of the variable.
     /// </summary>
     public enum VariableType { Any, Boolean, Number, String };
-
-    public enum FormParameterType { File, Text };
 
     /// <summary>
     /// Postman stores the type of data associated with this request in this field.
@@ -965,18 +963,6 @@ namespace PostmanCollectionReader
     }
 
     /// <summary>
-    /// When the cookie expires.
-    /// </summary>
-    public partial struct Expires
-    {
-        public double? Double;
-        public string String;
-
-        public static implicit operator Expires(double Double) => new Expires { Double = Double };
-        public static implicit operator Expires(string String) => new Expires { String = String };
-    }
-
-    /// <summary>
     /// No HTTP request is complete without its headers, and the same is true for a Postman
     /// request. This field is an array containing all the headers.
     /// </summary>
@@ -1062,11 +1048,9 @@ namespace PostmanCollectionReader
                 CollectionVersionConverter.Singleton,
                 RequestUnionConverter.Singleton,
                 SrcConverter.Singleton,
-                FormParameterTypeConverter.Singleton,
                 ModeConverter.Singleton,
                 HeaderUnionConverter.Singleton,
                 ResponseConverter.Singleton,
-                ExpiresConverter.Singleton,
                 HeadersConverter.Singleton,
                 HeaderElementConverter.Singleton,
                 ResponseTimeConverter.Singleton,
@@ -1558,47 +1542,6 @@ namespace PostmanCollectionReader
         public static readonly SrcConverter Singleton = new SrcConverter();
     }
 
-    internal class FormParameterTypeConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(FormParameterType) || t == typeof(FormParameterType?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            switch (value)
-            {
-                case "file":
-                    return FormParameterType.File;
-                case "text":
-                    return FormParameterType.Text;
-            }
-            throw new Exception("Cannot unmarshal type FormParameterType");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (FormParameterType)untypedValue;
-            switch (value)
-            {
-                case FormParameterType.File:
-                    serializer.Serialize(writer, "file");
-                    return;
-                case FormParameterType.Text:
-                    serializer.Serialize(writer, "text");
-                    return;
-            }
-            throw new Exception("Cannot marshal type FormParameterType");
-        }
-
-        public static readonly FormParameterTypeConverter Singleton = new FormParameterTypeConverter();
-    }
-
     internal class ModeConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Mode) || t == typeof(Mode?);
@@ -1768,45 +1711,6 @@ namespace PostmanCollectionReader
         }
 
         public static readonly ResponseConverter Singleton = new ResponseConverter();
-    }
-
-    internal class ExpiresConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(Expires) || t == typeof(Expires?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            switch (reader.TokenType)
-            {
-                case JsonToken.Integer:
-                case JsonToken.Float:
-                    var doubleValue = serializer.Deserialize<double>(reader);
-                    return new Expires { Double = doubleValue };
-                case JsonToken.String:
-                case JsonToken.Date:
-                    var stringValue = serializer.Deserialize<string>(reader);
-                    return new Expires { String = stringValue };
-            }
-            throw new Exception("Cannot unmarshal type Expires");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            var value = (Expires)untypedValue;
-            if (value.Double != null)
-            {
-                serializer.Serialize(writer, value.Double.Value);
-                return;
-            }
-            if (value.String != null)
-            {
-                serializer.Serialize(writer, value.String);
-                return;
-            }
-            throw new Exception("Cannot marshal type Expires");
-        }
-
-        public static readonly ExpiresConverter Singleton = new ExpiresConverter();
     }
 
     internal class HeadersConverter : JsonConverter

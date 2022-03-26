@@ -5,10 +5,11 @@
 		<Authors>Hamed Fathi</Authors>
 		<Company />
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<Version>1.1.0</Version>
+		<Version>1.2.0</Version>
 		<PackageProjectUrl>https://github.com/HamedFathi/PostmanCollectionReader</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/HamedFathi/PostmanCollectionReader</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Description>A library to read Postman Collection v2.1 Json files.</Description>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
