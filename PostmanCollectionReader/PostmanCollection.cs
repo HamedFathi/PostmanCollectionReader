@@ -1,4 +1,9 @@
-﻿using System;
+﻿// ReSharper disable IdentifierTypo
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnusedMember.Global
+// ReSharper disable StringLiteralTypo
+// ReSharper disable CommentTypo
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
@@ -35,7 +40,7 @@ namespace PostmanCollectionReader
     /// <summary>
     /// Represents authentication helpers provided by Postman
     /// </summary>
-    public partial class Auth
+    public class Auth
     {
         /// <summary>
         /// The attributes for API Key Authentication.
@@ -114,7 +119,7 @@ namespace PostmanCollectionReader
     /// Represents an attribute for any authorization method provided by Postman. For example
     /// `username` and `password` are set as auth attributes for Basic Authentication method.
     /// </summary>
-    public partial class ApikeyElement
+    public class ApikeyElement
     {
         [JsonProperty("key", Required = Required.Always)]
         public string Key { get; set; }
@@ -132,7 +137,7 @@ namespace PostmanCollectionReader
     ///
     /// Defines a script associated with an associated event name
     /// </summary>
-    public partial class Event
+    public class Event
     {
         /// <summary>
         /// Indicates whether the event is disabled. If absent, the event is assumed to be enabled.
@@ -160,7 +165,7 @@ namespace PostmanCollectionReader
     /// A script is a snippet of Javascript code that can be used to to perform setup or teardown
     /// operations on a particular response.
     /// </summary>
-    public partial class Script
+    public class Script
     {
         [JsonProperty("exec", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Host? Exec { get; set; }
@@ -187,7 +192,7 @@ namespace PostmanCollectionReader
         public string Type { get; set; }
     }
 
-    public partial class UrlClass
+    public class UrlClass
     {
         /// <summary>
         /// Contains the URL fragment (if any). Usually this is not transmitted over the network, but
@@ -241,7 +246,7 @@ namespace PostmanCollectionReader
         public List<Variable> Variable { get; set; }
     }
 
-    public partial class PathClass
+    public class PathClass
     {
         [JsonProperty("type", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
@@ -250,7 +255,7 @@ namespace PostmanCollectionReader
         public string Value { get; set; }
     }
 
-    public partial class QueryParam
+    public class QueryParam
     {
         [JsonProperty("description")]
         public DescriptionUnion? Description { get; set; }
@@ -268,7 +273,7 @@ namespace PostmanCollectionReader
         public string Value { get; set; }
     }
 
-    public partial class Description
+    public class Description
     {
         /// <summary>
         /// The content of the description goes here, as a raw string.
@@ -300,7 +305,7 @@ namespace PostmanCollectionReader
     /// can save a lot of time. Variables can be defined, and referenced to from any part of a
     /// request.
     /// </summary>
-    public partial class Variable
+    public class Variable
     {
         [JsonProperty("description")]
         public DescriptionUnion? Description { get; set; }
@@ -351,7 +356,7 @@ namespace PostmanCollectionReader
     /// <summary>
     /// Detailed description of the info block
     /// </summary>
-    public partial class Information
+    public class Information
     {
         /// <summary>
         /// Every collection is identified by the unique value of this field. The value of this field
@@ -385,7 +390,7 @@ namespace PostmanCollectionReader
         public CollectionVersion? Version { get; set; }
     }
 
-    public partial class CollectionVersionClass
+    public class CollectionVersionClass
     {
         /// <summary>
         /// A human friendly identifier to make sense of the version numbers. E.g: 'beta-3'
@@ -426,7 +431,7 @@ namespace PostmanCollectionReader
     /// it is necessary to be able to group requests together. This can be achived using
     /// 'Folders'. A folder just is an ordered set of requests.
     /// </summary>
-    public partial class Items
+    public class Items
     {
         [JsonProperty("description")]
         public DescriptionUnion? Description { get; set; }
@@ -472,7 +477,7 @@ namespace PostmanCollectionReader
         public List<Items> Item { get; set; }
     }
 
-    public partial class RequestClass
+    public class RequestClass
     {
         [JsonProperty("auth")]
         public Auth Auth { get; set; }
@@ -502,7 +507,7 @@ namespace PostmanCollectionReader
     /// <summary>
     /// This field contains the data usually contained in the request body.
     /// </summary>
-    public partial class Body
+    public class Body
     {
         /// <summary>
         /// When set to true, prevents request body from being sent.
@@ -537,8 +542,42 @@ namespace PostmanCollectionReader
         [JsonProperty("urlencoded", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<UrlEncodedParameter> Urlencoded { get; set; }
     }
+    public class Environment
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
 
-    public partial class File
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("values")]
+        public List<ValueInfo> Values { get; set; }
+
+        [JsonProperty("_postman_variable_scope")]
+        public string PostmanVariableScope { get; set; }
+
+        [JsonProperty("_postman_exported_at")]
+        public DateTime PostmanExportedAt { get; set; }
+
+        [JsonProperty("_postman_exported_using")]
+        public string PostmanExportedUsing { get; set; }
+    }
+
+    public class ValueInfo
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+
+        [JsonProperty("enabled")]
+        public bool Enabled { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+    public class File
     {
         [JsonProperty("content", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public string Content { get; set; }
@@ -547,7 +586,7 @@ namespace PostmanCollectionReader
         public string Src { get; set; }
     }
 
-    public partial class FormParameter
+    public class FormParameter
     {
         /// <summary>
         /// Override Content-Type header of this form data entity.
@@ -577,7 +616,7 @@ namespace PostmanCollectionReader
         public Src? Src { get; set; }
     }
 
-    public partial class UrlEncodedParameter
+    public class UrlEncodedParameter
     {
         [JsonProperty("description")]
         public DescriptionUnion? Description { get; set; }
@@ -595,7 +634,7 @@ namespace PostmanCollectionReader
     /// <summary>
     /// A representation of an ssl certificate
     /// </summary>
-    public partial class Certificate
+    public class Certificate
     {
         /// <summary>
         /// An object containing path to file certificate, on the file system
@@ -631,7 +670,7 @@ namespace PostmanCollectionReader
     /// <summary>
     /// An object containing path to file certificate, on the file system
     /// </summary>
-    public partial class Cert
+    public class Cert
     {
         /// <summary>
         /// The path to file containing key for certificate, on the file system
@@ -643,7 +682,7 @@ namespace PostmanCollectionReader
     /// <summary>
     /// An object containing path to file containing private key, on the file system
     /// </summary>
-    public partial class Key
+    public class Key
     {
         /// <summary>
         /// The path to file containing key for certificate, on the file system
@@ -657,7 +696,7 @@ namespace PostmanCollectionReader
     ///
     /// Represents a single HTTP Header
     /// </summary>
-    public partial class Header
+    public class Header
     {
         [JsonProperty("description")]
         public DescriptionUnion? Description { get; set; }
@@ -685,7 +724,7 @@ namespace PostmanCollectionReader
     /// Using the Proxy, you can configure your custom proxy into the postman for particular url
     /// match
     /// </summary>
-    public partial class ProxyConfig
+    public class ProxyConfig
     {
         /// <summary>
         /// When set to true, ignores this proxy configuration entity
@@ -718,7 +757,7 @@ namespace PostmanCollectionReader
         public bool? Tunnel { get; set; }
     }
 
-    public partial class ResponseClass
+    public class ResponseClass
     {
         /// <summary>
         /// The raw text of the response.
@@ -772,7 +811,7 @@ namespace PostmanCollectionReader
     /// A Cookie, that follows the [Google Chrome
     /// format](https://developer.chrome.com/extensions/cookies)
     /// </summary>
-    public partial class Cookie
+    public class Cookie
     {
         /// <summary>
         /// The domain for which this cookie is valid.
@@ -842,23 +881,23 @@ namespace PostmanCollectionReader
         public string Value { get; set; }
     }
 
-    public enum AuthType { Apikey, Awsv4, Basic, Bearer, Digest, Edgegrid, Hawk, Noauth, Ntlm, Oauth1, Oauth2 };
+    public enum AuthType { Apikey, Awsv4, Basic, Bearer, Digest, Edgegrid, Hawk, Noauth, Ntlm, Oauth1, Oauth2 }
 
     /// <summary>
     /// A variable may have multiple types. This field specifies the type of the variable.
     /// </summary>
-    public enum VariableType { Any, Boolean, Number, String };
+    public enum VariableType { Any, Boolean, Number, String }
 
     /// <summary>
     /// Postman stores the type of data associated with this request in this field.
     /// </summary>
-    public enum Mode { File, Formdata, Graphql, Raw, Urlencoded };
+    public enum Mode { File, Formdata, Graphql, Raw, Urlencoded }
 
     /// <summary>
     /// The host for the URL, E.g: api.yourdomain.com. Can be stored as a string or as an array
     /// of strings.
     /// </summary>
-    public partial struct Host
+    public struct Host
     {
         public string String;
         public List<string> StringArray;
@@ -871,7 +910,7 @@ namespace PostmanCollectionReader
     /// The complete path of the current url, broken down into segments. A segment could be a
     /// string, or a path variable.
     /// </summary>
-    public partial struct PathElement
+    public struct PathElement
     {
         public PathClass PathClass;
         public string String;
@@ -880,7 +919,7 @@ namespace PostmanCollectionReader
         public static implicit operator PathElement(string String) => new PathElement { String = String };
     }
 
-    public partial struct UrlPath
+    public struct UrlPath
     {
         public List<PathElement> AnythingArray;
         public string String;
@@ -893,7 +932,7 @@ namespace PostmanCollectionReader
     /// A Description can be a raw text, or be an object, which holds the description along with
     /// its format.
     /// </summary>
-    public partial struct DescriptionUnion
+    public struct DescriptionUnion
     {
         public Description Description;
         public string String;
@@ -907,7 +946,7 @@ namespace PostmanCollectionReader
     /// If object, contains the complete broken-down URL for this request. If string, contains
     /// the literal request URL.
     /// </summary>
-    public partial struct Url
+    public struct Url
     {
         public string String;
         public UrlClass UrlClass;
@@ -921,7 +960,7 @@ namespace PostmanCollectionReader
     /// version number. While optional, it is recommended that you use this field to its fullest
     /// extent!
     /// </summary>
-    public partial struct CollectionVersion
+    public struct CollectionVersion
     {
         public CollectionVersionClass CollectionVersionClass;
         public string String;
@@ -930,7 +969,7 @@ namespace PostmanCollectionReader
         public static implicit operator CollectionVersion(string String) => new CollectionVersion { String = String };
     }
 
-    public partial struct Src
+    public struct Src
     {
         public List<object> AnythingArray;
         public string String;
@@ -940,7 +979,7 @@ namespace PostmanCollectionReader
         public bool IsNull => AnythingArray == null && String == null;
     }
 
-    public partial struct HeaderUnion
+    public struct HeaderUnion
     {
         public List<Header> HeaderArray;
         public string String;
@@ -953,7 +992,7 @@ namespace PostmanCollectionReader
     /// A request represents an HTTP request. If a string, the string is assumed to be the
     /// request URL and the method is assumed to be 'GET'.
     /// </summary>
-    public partial struct RequestUnion
+    public struct RequestUnion
     {
         public RequestClass RequestClass;
         public string String;
@@ -966,7 +1005,7 @@ namespace PostmanCollectionReader
     /// No HTTP request is complete without its headers, and the same is true for a Postman
     /// request. This field is an array containing all the headers.
     /// </summary>
-    public partial struct HeaderElement
+    public struct HeaderElement
     {
         public Header Header;
         public string String;
@@ -975,7 +1014,7 @@ namespace PostmanCollectionReader
         public static implicit operator HeaderElement(string String) => new HeaderElement { String = String };
     }
 
-    public partial struct Headers
+    public struct Headers
     {
         public List<HeaderElement> AnythingArray;
         public string String;
@@ -989,7 +1028,7 @@ namespace PostmanCollectionReader
     /// The time taken by the request to complete. If a number, the unit is milliseconds. If the
     /// response is manually created, this can be set to `null`.
     /// </summary>
-    public partial struct ResponseTime
+    public struct ResponseTime
     {
         public double? Double;
         public string String;
@@ -1002,7 +1041,7 @@ namespace PostmanCollectionReader
     /// <summary>
     /// A response represents an HTTP response.
     /// </summary>
-    public partial struct Response
+    public struct Response
     {
         public List<object> AnythingArray;
         public bool? Bool;
@@ -1022,12 +1061,14 @@ namespace PostmanCollectionReader
 
     public partial class PostmanCollection
     {
-        public static PostmanCollection FromJson(string json) => JsonConvert.DeserializeObject<PostmanCollection>(json, PostmanCollectionReader.Converter.Settings);
+        public static PostmanCollection FromJson(string json) => JsonConvert.DeserializeObject<PostmanCollection>(json, Converter.Settings);
+        public static Environment EnvironmentFromJson(string json) => JsonConvert.DeserializeObject<Environment>(json);
     }
+
 
     public static class Serialize
     {
-        public static string ToJson(this PostmanCollection self) => JsonConvert.SerializeObject(self, PostmanCollectionReader.Converter.Settings);
+        public static string ToJson(this PostmanCollection self) => JsonConvert.SerializeObject(self, Converter.Settings);
     }
 
     internal static class Converter
@@ -1306,7 +1347,7 @@ namespace PostmanCollectionReader
             switch (reader.TokenType)
             {
                 case JsonToken.Null:
-                    return new DescriptionUnion { };
+                    return new DescriptionUnion();
                 case JsonToken.String:
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
@@ -1438,7 +1479,7 @@ namespace PostmanCollectionReader
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
             var value = serializer.Deserialize<string>(reader);
-            if (value.Length <= 10)
+            if (value != null && value.Length <= 10)
             {
                 return value;
             }
@@ -1506,7 +1547,7 @@ namespace PostmanCollectionReader
             switch (reader.TokenType)
             {
                 case JsonToken.Null:
-                    return new Src { };
+                    return new Src();
                 case JsonToken.String:
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
@@ -1645,7 +1686,7 @@ namespace PostmanCollectionReader
             switch (reader.TokenType)
             {
                 case JsonToken.Null:
-                    return new Response { };
+                    return new Response();
                 case JsonToken.Integer:
                     var integerValue = serializer.Deserialize<long>(reader);
                     return new Response { Integer = integerValue };
@@ -1722,7 +1763,7 @@ namespace PostmanCollectionReader
             switch (reader.TokenType)
             {
                 case JsonToken.Null:
-                    return new Headers { };
+                    return new Headers();
                 case JsonToken.String:
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
@@ -1805,7 +1846,7 @@ namespace PostmanCollectionReader
             switch (reader.TokenType)
             {
                 case JsonToken.Null:
-                    return new ResponseTime { };
+                    return new ResponseTime();
                 case JsonToken.Integer:
                 case JsonToken.Float:
                     var doubleValue = serializer.Deserialize<double>(reader);

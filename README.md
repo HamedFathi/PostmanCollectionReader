@@ -22,6 +22,7 @@ dotnet add package PostmanCollectionReader
 ```cs
 using PostmanCollectionReader;
 var postmanCollection = PostmanCollection.FromJson(jsonString);
+var environment = PostmanCollection.EnvironmentFromJson(jsonString);
 ```
 
 ---
