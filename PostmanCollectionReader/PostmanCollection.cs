@@ -542,41 +542,6 @@ namespace PostmanCollectionReader
         [JsonProperty("urlencoded", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public List<UrlEncodedParameter> Urlencoded { get; set; }
     }
-    public class Environment
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("values")]
-        public List<VariableValue> Values { get; set; }
-
-        [JsonProperty("_postman_variable_scope")]
-        public string PostmanVariableScope { get; set; }
-
-        [JsonProperty("_postman_exported_at")]
-        public DateTime PostmanExportedAt { get; set; }
-
-        [JsonProperty("_postman_exported_using")]
-        public string PostmanExportedUsing { get; set; }
-    }
-
-    public class VariableValue
-    {
-        [JsonProperty("key")]
-        public string Key { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("enabled")]
-        public bool Enabled { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
     public class File
     {
         [JsonProperty("content", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
@@ -1062,7 +1027,6 @@ namespace PostmanCollectionReader
     public partial class PostmanCollection
     {
         public static PostmanCollection FromJson(string json) => JsonConvert.DeserializeObject<PostmanCollection>(json, Converter.Settings);
-        public static Environment EnvironmentFromJson(string json) => JsonConvert.DeserializeObject<Environment>(json);
     }
 
 
