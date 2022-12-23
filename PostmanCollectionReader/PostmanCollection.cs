@@ -551,7 +551,7 @@ namespace PostmanCollectionReader
         public string Name { get; set; }
 
         [JsonProperty("values")]
-        public List<ValueInfo> Values { get; set; }
+        public List<VariableValue> Values { get; set; }
 
         [JsonProperty("_postman_variable_scope")]
         public string PostmanVariableScope { get; set; }
@@ -563,7 +563,7 @@ namespace PostmanCollectionReader
         public string PostmanExportedUsing { get; set; }
     }
 
-    public class ValueInfo
+    public class VariableValue
     {
         [JsonProperty("key")]
         public string Key { get; set; }
