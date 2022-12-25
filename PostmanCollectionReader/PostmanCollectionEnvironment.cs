@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿// ReSharper disable UnusedMember.Global
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
 namespace PostmanCollectionReader
 {
-    public class Environment
+    public class PostmanEnvironment
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -13,7 +14,7 @@ namespace PostmanCollectionReader
         public string Name { get; set; }
 
         [JsonProperty("values")]
-        public List<EnvironmentVariable> Values { get; set; }
+        public List<PostmanEnvironmentVariable> Values { get; set; }
 
         [JsonProperty("_postman_variable_scope")]
         public string PostmanVariableScope { get; set; }
@@ -25,7 +26,7 @@ namespace PostmanCollectionReader
         public string PostmanExportedUsing { get; set; }
     }
 
-    public class EnvironmentVariable
+    public class PostmanEnvironmentVariable
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -41,6 +42,6 @@ namespace PostmanCollectionReader
     }
     public partial class PostmanCollection
     {
-        public static Environment EnvironmentFromJson(string json) => JsonConvert.DeserializeObject<Environment>(json);
+        public static PostmanEnvironment EnvironmentFromJson(string json) => JsonConvert.DeserializeObject<PostmanEnvironment>(json);
     }
 }
