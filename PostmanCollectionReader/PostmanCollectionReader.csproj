@@ -1,11 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 		<Authors>Hamed Fathi</Authors>
 		<Company />
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<Version>2.0.1</Version>
+		<Version>2.0.2</Version>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<WarningsAsErrors>Nullable;CS8600;CS8602;CS8603;CS0619</WarningsAsErrors>
+		<LangVersion>latest</LangVersion>
 		<PackageProjectUrl>https://github.com/HamedFathi/PostmanCollectionReader</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/HamedFathi/PostmanCollectionReader</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>

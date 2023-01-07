@@ -2,15 +2,11 @@
 // ReSharper disable CommentTypo
 // ReSharper disable StringLiteralTypo
 // ReSharper disable UnusedMember.Global
+// ReSharper disable InconsistentNaming
 
-#nullable enable
-using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
-// ReSharper disable InconsistentNaming
 
 namespace PostmanCollectionReader;
 public enum PostmanAuthType { Apikey, Awsv4, Basic, Bearer, Digest, Edgegrid, Hawk, Noauth, Ntlm, Oauth1, Oauth2 }
