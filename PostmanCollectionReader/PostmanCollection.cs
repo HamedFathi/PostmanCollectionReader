@@ -4,12 +4,12 @@
 // ReSharper disable UnusedMember.Global
 
 #nullable enable
-#pragma warning disable CS8618
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+
 // ReSharper disable InconsistentNaming
 
 namespace PostmanCollectionReader;
@@ -208,14 +208,14 @@ public static class Serialize
 public class PostmanApikeyElement
 {
     [JsonPropertyName("key")]
-    public string Key { get; set; }
+    public string Key { get; set; } = null!;
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public string? Type { get; set; }
 
     [JsonPropertyName("value")]
-    public object Value { get; set; }
+    public object? Value { get; set; }
 }
 
 /// <summary>
@@ -228,7 +228,7 @@ public class PostmanAuth
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("apikey")]
-    public List<PostmanApikeyElement> Apikey { get; set; }
+    public List<PostmanApikeyElement>? Apikey { get; set; }
 
     /// <summary>
     /// The attributes for [AWS
@@ -236,7 +236,7 @@ public class PostmanAuth
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("awsv4")]
-    public List<PostmanApikeyElement> Awsv4 { get; set; }
+    public List<PostmanApikeyElement>? Awsv4 { get; set; }
 
     /// <summary>
     /// The attributes for [Basic
@@ -244,7 +244,7 @@ public class PostmanAuth
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("basic")]
-    public List<PostmanApikeyElement> Basic { get; set; }
+    public List<PostmanApikeyElement>? Basic { get; set; }
 
     /// <summary>
     /// The helper attributes for [Bearer Token
@@ -252,7 +252,7 @@ public class PostmanAuth
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("bearer")]
-    public List<PostmanApikeyElement> Bearer { get; set; }
+    public List<PostmanApikeyElement>? Bearer { get; set; }
 
     /// <summary>
     /// The attributes for [Digest
@@ -260,7 +260,7 @@ public class PostmanAuth
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("digest")]
-    public List<PostmanApikeyElement> Digest { get; set; }
+    public List<PostmanApikeyElement>? Digest { get; set; }
 
     /// <summary>
     /// The attributes for [Akamai EdgeGrid
@@ -268,17 +268,17 @@ public class PostmanAuth
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("edgegrid")]
-    public List<PostmanApikeyElement> Edgegrid { get; set; }
+    public List<PostmanApikeyElement>? Edgegrid { get; set; }
 
     /// <summary>
     /// The attributes for [Hawk Authentication](https://github.com/hueniverse/hawk)
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("hawk")]
-    public List<PostmanApikeyElement> Hawk { get; set; }
+    public List<PostmanApikeyElement>? Hawk { get; set; }
 
     [JsonPropertyName("noauth")]
-    public object Noauth { get; set; }
+    public object? Noauth { get; set; }
 
     /// <summary>
     /// The attributes for [NTLM
@@ -286,21 +286,21 @@ public class PostmanAuth
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("ntlm")]
-    public List<PostmanApikeyElement> Ntlm { get; set; }
+    public List<PostmanApikeyElement>? Ntlm { get; set; }
 
     /// <summary>
     /// The attributes for [OAuth2](https://oauth.net/1/)
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("oauth1")]
-    public List<PostmanApikeyElement> Oauth1 { get; set; }
+    public List<PostmanApikeyElement>? Oauth1 { get; set; }
 
     /// <summary>
     /// Helper attributes for [OAuth2](https://oauth.net/2/)
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("oauth2")]
-    public List<PostmanApikeyElement> Oauth2 { get; set; }
+    public List<PostmanApikeyElement>? Oauth2 { get; set; }
 
     [JsonPropertyName("type")]
     public PostmanAuthType Type { get; set; }
@@ -320,15 +320,15 @@ public class PostmanBody
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("file")]
-    public PostmanFile File { get; set; }
+    public PostmanFile? File { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("formdata")]
-    public List<PostmanFormParameter> Formdata { get; set; }
+    public List<PostmanFormParameter>? Formdata { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("graphql")]
-    public Dictionary<string, object> Graphql { get; set; }
+    public Dictionary<string, object>? Graphql { get; set; }
 
     /// <summary>
     /// Postman stores the type of data associated with this request in this field.
@@ -342,15 +342,15 @@ public class PostmanBody
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("options")]
-    public Dictionary<string, object> Options { get; set; }
+    public Dictionary<string, object>? Options { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("raw")]
-    public string Raw { get; set; }
+    public string? Raw { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("urlencoded")]
-    public List<PostmanUrlEncodedParameter> Urlencoded { get; set; }
+    public List<PostmanUrlEncodedParameter>? Urlencoded { get; set; }
 }
 
 /// <summary>
@@ -362,7 +362,7 @@ public class PostmanCert
     /// The path to file containing key for certificate, on the file system
     /// </summary>
     [JsonPropertyName("src")]
-    public object Src { get; set; }
+    public object? Src { get; set; }
 }
 
 /// <summary>
@@ -375,48 +375,48 @@ public class PostmanCertificate
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("cert")]
-    public PostmanCert Cert { get; set; }
+    public PostmanCert? Cert { get; set; }
 
     /// <summary>
     /// An object containing path to file containing private key, on the file system
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("key")]
-    public PostmanKey Key { get; set; }
+    public PostmanKey? Key { get; set; }
 
     /// <summary>
     /// A list of Url match pattern strings, to identify Urls this certificate can be used for.
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("matches")]
-    public List<string> Matches { get; set; }
+    public List<string>? Matches { get; set; }
 
     /// <summary>
     /// A name for the certificate for user reference
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// The passphrase for the certificate
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("passphrase")]
-    public string Passphrase { get; set; }
+    public string? Passphrase { get; set; }
 }
 
 public partial class PostmanCollection
 {
     [JsonPropertyName("auth")]
-    public PostmanAuth Auth { get; set; }
+    public PostmanAuth? Auth { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("event")]
-    public List<PostmanEvent> Event { get; set; }
+    public List<PostmanEvent>? Event { get; set; }
 
     [JsonPropertyName("info")]
-    public PostmanInformation Info { get; set; }
+    public PostmanInformation? Info { get; set; }
 
     /// <summary>
     /// Items are the basic unit for a Postman collection. You can think of them as corresponding
@@ -424,15 +424,15 @@ public partial class PostmanCollection
     /// associated with it.
     /// </summary>
     [JsonPropertyName("item")]
-    public List<PostmanItems> Item { get; set; }
+    public List<PostmanItems>? Item { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("protocolProfileBehavior")]
-    public Dictionary<string, object> ProtocolProfileBehavior { get; set; }
+    public Dictionary<string, object>? ProtocolProfileBehavior { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("variable")]
-    public List<PostmanVariable> Variable { get; set; }
+    public List<PostmanVariable>? Variable { get; set; }
 }
 
 public partial class PostmanCollection
@@ -450,7 +450,7 @@ public class PostmanCollectionVersionClass
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("identifier")]
     [JsonConverter(typeof(PostmanMinMaxLengthCheckConverter))]
-    public string Identifier { get; set; }
+    public string? Identifier { get; set; }
 
     /// <summary>
     /// Increment this number if you make changes to the collection that changes its behaviour.
@@ -460,7 +460,7 @@ public class PostmanCollectionVersionClass
     public long Major { get; set; }
 
     [JsonPropertyName("meta")]
-    public object Meta { get; set; }
+    public object? Meta { get; set; }
 
     /// <summary>
     /// You should increment this number if you make changes that will not break anything that
@@ -486,13 +486,13 @@ public class PostmanCookie
     /// The domain for which this cookie is valid.
     /// </summary>
     [JsonPropertyName("domain")]
-    public string Domain { get; set; }
+    public string? Domain { get; set; }
 
     /// <summary>
     /// When the cookie expires.
     /// </summary>
     [JsonPropertyName("expires")]
-    public string Expires { get; set; }
+    public string? Expires { get; set; }
 
     /// <summary>
     /// Custom attributes for a cookie go here, such as the [Priority
@@ -500,7 +500,7 @@ public class PostmanCookie
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("extensions")]
-    public List<object> Extensions { get; set; }
+    public List<object>? Extensions { get; set; }
 
     /// <summary>
     /// True if the cookie is a host-only cookie. (i.e. a request's URL domain must exactly match
@@ -520,20 +520,20 @@ public class PostmanCookie
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("maxAge")]
-    public string MaxAge { get; set; }
+    public string? MaxAge { get; set; }
 
     /// <summary>
     /// This is the name of the Cookie.
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// The path associated with the Cookie.
     /// </summary>
     [JsonPropertyName("path")]
-    public string Path { get; set; }
+    public string? Path { get; set; }
 
     /// <summary>
     /// Indicates if the 'secure' flag is set on the Cookie, meaning that it is transmitted over
@@ -555,7 +555,7 @@ public class PostmanCookie
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("value")]
-    public string Value { get; set; }
+    public string? Value { get; set; }
 }
 
 public class PostmanDateOnlyConverter : JsonConverter<DateOnly>
@@ -565,7 +565,7 @@ public class PostmanDateOnlyConverter : JsonConverter<DateOnly>
 
     public PostmanDateOnlyConverter(string? serializationFormat)
     {
-        this._serializationFormat = serializationFormat ?? "yyyy-MM-dd";
+        _serializationFormat = serializationFormat ?? "yyyy-MM-dd";
     }
 
     public override DateOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -585,7 +585,7 @@ public class PostmanDescription
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("content")]
-    public string Content { get; set; }
+    public string? Content { get; set; }
 
     /// <summary>
     /// Holds the mime type of the raw description content. E.g: 'text/markdown' or 'text/html'.
@@ -594,32 +594,32 @@ public class PostmanDescription
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public string? Type { get; set; }
 
     /// <summary>
     /// Description can have versions associated with it, which should be put in this property.
     /// </summary>
     [JsonPropertyName("version")]
-    public object Version { get; set; }
+    public object? Version { get; set; }
 }
 
 public class PostmanEnvironment
 {
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public string Id { get; set; } = null!;
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("values")]
-    public List<PostmanEnvironmentVariable> Variables { get; set; }
+    public List<PostmanEnvironmentVariable>? Variables { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("_postman_variable_scope")]
-    public string PostmanVariableScope { get; set; }
+    public string? PostmanVariableScope { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("_postman_exported_at")]
@@ -627,7 +627,7 @@ public class PostmanEnvironment
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("_postman_exported_using")]
-    public string PostmanExportedUsing { get; set; }
+    public string? PostmanExportedUsing { get; set; }
 
 }
 
@@ -639,11 +639,11 @@ public class PostmanEnvironmentVariable
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("key")]
-    public string Key { get; set; }
+    public string Key { get; set; } = null!;
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("value")]
-    public string Value { get; set; }
+    public string Value { get; set; } = null!;
 }
 /// <summary>
 /// Postman allows you to configure scripts to run when specific events occur. These scripts
@@ -665,27 +665,27 @@ public class PostmanEvent
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public string? Id { get; set; }
 
     /// <summary>
     /// Can be set to `test` or `prerequest` for test scripts or pre-request scripts respectively.
     /// </summary>
     [JsonPropertyName("listen")]
-    public string Listen { get; set; }
+    public string? Listen { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("script")]
-    public PostmanScript Script { get; set; }
+    public PostmanScript? Script { get; set; }
 }
 
 public class PostmanFile
 {
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("content")]
-    public string Content { get; set; }
+    public string? Content { get; set; }
 
     [JsonPropertyName("src")]
-    public string Src { get; set; }
+    public string? Src { get; set; }
 }
 
 public class PostmanFormParameter
@@ -695,7 +695,7 @@ public class PostmanFormParameter
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("contentType")]
-    public string ContentType { get; set; }
+    public string? ContentType { get; set; }
 
     [JsonPropertyName("description")]
     public PostmanDescriptionUnion? Description { get; set; }
@@ -707,19 +707,19 @@ public class PostmanFormParameter
     [JsonPropertyName("disabled")]
     public bool? Disabled { get; set; }
 
-    [JsonPropertyName("key")]
-    public string Key { get; set; }
+    [JsonPropertyName("key")] 
+    public string Key { get; set; } = null!;
 
     [JsonPropertyName("src")]
     public PostmanSrc? Src { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public string? Type { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("value")]
-    public string Value { get; set; }
+    public string? Value { get; set; }
 }
 
 /// <summary>
@@ -743,13 +743,13 @@ public class PostmanHeader
     /// This holds the LHS of the HTTP Header, e.g ``Content-Type`` or ``X-Custom-Header``
     /// </summary>
     [JsonPropertyName("key")]
-    public string Key { get; set; }
+    public string Key { get; set; } = null!;
 
     /// <summary>
     /// The value (or the RHS) of the Header is stored in this field.
     /// </summary>
     [JsonPropertyName("value")]
-    public string Value { get; set; }
+    public string? Value { get; set; }
 }
 
 /// <summary>
@@ -766,7 +766,7 @@ public class PostmanInformation
     /// collections, as such outlining its usage or content.
     /// </summary>
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// Every collection is identified by the unique value of this field. The value of this field
@@ -777,13 +777,13 @@ public class PostmanInformation
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("_postman_id")]
-    public string PostmanId { get; set; }
+    public string? PostmanId { get; set; }
     /// <summary>
     /// This should ideally hold a link to the Postman schema that is used to validate this
     /// collection. E.g: https://schema.getpostman.com/collection/v1
     /// </summary>
     [JsonPropertyName("schema")]
-    public string Schema { get; set; }
+    public string? Schema { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("version")]
@@ -801,21 +801,21 @@ public class PostmanInformation
 public class PostmanItems
 {
     [JsonPropertyName("auth")]
-    public PostmanAuth Auth { get; set; }
+    public PostmanAuth? Auth { get; set; }
 
     [JsonPropertyName("description")]
     public PostmanDescriptionUnion? Description { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("event")]
-    public List<PostmanEvent> Event { get; set; }
+    public List<PostmanEvent>? Event { get; set; }
 
     /// <summary>
     /// A unique ID that is used to identify collections internally
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public string? Id { get; set; }
 
     /// <summary>
     /// Items are entities which contain an actual HTTP request, and sample responses attached to
@@ -823,7 +823,7 @@ public class PostmanItems
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("item")]
-    public List<PostmanItems> Item { get; set; }
+    public List<PostmanItems>? Item { get; set; }
 
     /// <summary>
     /// A human readable identifier for the current item.
@@ -833,11 +833,11 @@ public class PostmanItems
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("protocolProfileBehavior")]
-    public Dictionary<string, object> ProtocolProfileBehavior { get; set; }
+    public Dictionary<string, object>? ProtocolProfileBehavior { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("request")]
@@ -845,11 +845,11 @@ public class PostmanItems
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("response")]
-    public List<PostmanResponse> Response { get; set; }
+    public List<PostmanResponse>? Response { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("variable")]
-    public List<PostmanVariable> Variable { get; set; }
+    public List<PostmanVariable>? Variable { get; set; }
 }
 
 /// <summary>
@@ -861,18 +861,18 @@ public class PostmanKey
     /// The path to file containing key for certificate, on the file system
     /// </summary>
     [JsonPropertyName("src")]
-    public object Src { get; set; }
+    public object? Src { get; set; }
 }
 
 public class PostmanPathClass
 {
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public string? Type { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("value")]
-    public string Value { get; set; }
+    public string? Value { get; set; }
 }
 
 /// <summary>
@@ -893,14 +893,14 @@ public class PostmanProxyConfig
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("host")]
-    public string Host { get; set; }
+    public string? Host { get; set; }
 
     /// <summary>
     /// The Url match for which the proxy config is defined
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("match")]
-    public string Match { get; set; }
+    public string? Match { get; set; }
 
     /// <summary>
     /// The proxy server port
@@ -929,24 +929,24 @@ public class PostmanQueryParam
     [JsonPropertyName("disabled")]
     public bool? Disabled { get; set; }
 
-    [JsonPropertyName("key")]
-    public string Key { get; set; }
+    [JsonPropertyName("key")] 
+    public string Key { get; set; } = null!;
 
     [JsonPropertyName("value")]
-    public string Value { get; set; }
+    public string? Value { get; set; }
 }
 
 public class PostmanRequestClass
 {
     [JsonPropertyName("auth")]
-    public PostmanAuth Auth { get; set; }
+    public PostmanAuth? Auth { get; set; }
 
     [JsonPropertyName("body")]
-    public PostmanBody Body { get; set; }
+    public PostmanBody? Body { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("certificate")]
-    public PostmanCertificate Certificate { get; set; }
+    public PostmanCertificate? Certificate { get; set; }
 
     [JsonPropertyName("description")]
     public PostmanDescriptionUnion? Description { get; set; }
@@ -957,11 +957,11 @@ public class PostmanRequestClass
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("method")]
-    public string Method { get; set; }
+    public string? Method { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("proxy")]
-    public PostmanProxyConfig Proxy { get; set; }
+    public PostmanProxyConfig? Proxy { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("url")]
@@ -974,7 +974,7 @@ public class PostmanResponseClass
     /// The raw text of the response.
     /// </summary>
     [JsonPropertyName("body")]
-    public string Body { get; set; }
+    public string? Body { get; set; }
 
     /// <summary>
     /// The numerical response code, example: 200, 201, 404, etc.
@@ -985,7 +985,7 @@ public class PostmanResponseClass
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("cookie")]
-    public List<PostmanCookie> Cookie { get; set; }
+    public List<PostmanCookie>? Cookie { get; set; }
 
     [JsonPropertyName("header")]
     public PostmanHeaders? Header { get; set; }
@@ -996,13 +996,13 @@ public class PostmanResponseClass
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public string? Id { get; set; }
 
     /// <summary>
     /// The name of the response.
     /// </summary>
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("originalRequest")]
     public PostmanRequestUnion? OriginalRequest { get; set; }
@@ -1019,13 +1019,13 @@ public class PostmanResponseClass
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("status")]
-    public string Status { get; set; }
+    public string? Status { get; set; }
 
     /// <summary>
     /// Set of timing information related to request and response in milliseconds
     /// </summary>
     [JsonPropertyName("timings")]
-    public Dictionary<string, object> Timings { get; set; }
+    public Dictionary<string, object>? Timings { get; set; }
 }
 
 /// <summary>
@@ -1043,14 +1043,14 @@ public class PostmanScript
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public string? Id { get; set; }
 
     /// <summary>
     /// Script name
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("src")]
@@ -1061,7 +1061,7 @@ public class PostmanScript
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public string? Type { get; set; }
 }
 
 public class PostmanTimeOnlyConverter : JsonConverter<TimeOnly>
@@ -1072,7 +1072,7 @@ public class PostmanTimeOnlyConverter : JsonConverter<TimeOnly>
 
     public PostmanTimeOnlyConverter(string? serializationFormat)
     {
-        this._serializationFormat = serializationFormat ?? "HH:mm:ss.fff";
+        _serializationFormat = serializationFormat ?? "HH:mm:ss.fff";
     }
 
     public override TimeOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -1093,7 +1093,7 @@ public class PostmanUrlClass
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("hash")]
-    public string Hash { get; set; }
+    public string? Hash { get; set; }
 
     /// <summary>
     /// The host for the URL, E.g: api.yourdomain.com. Can be stored as a string or as an array
@@ -1113,14 +1113,14 @@ public class PostmanUrlClass
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("port")]
-    public string Port { get; set; }
+    public string? Port { get; set; }
 
     /// <summary>
     /// The protocol associated with the request, E.g: 'http'
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("protocol")]
-    public string Protocol { get; set; }
+    public string? Protocol { get; set; }
 
     /// <summary>
     /// An array of QueryParams, which is basically the query string part of the URL, parsed into
@@ -1128,7 +1128,7 @@ public class PostmanUrlClass
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("query")]
-    public List<PostmanQueryParam> Query { get; set; }
+    public List<PostmanQueryParam>? Query { get; set; }
 
     /// <summary>
     /// The string representation of the request URL, including the protocol, host, path, hash,
@@ -1136,7 +1136,7 @@ public class PostmanUrlClass
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("raw")]
-    public string Raw { get; set; }
+    public string? Raw { get; set; }
 
     /// <summary>
     /// Postman supports path variables with the syntax `/path/:variableName/to/somewhere`. These
@@ -1144,7 +1144,7 @@ public class PostmanUrlClass
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("variable")]
-    public List<PostmanVariable> Variable { get; set; }
+    public List<PostmanVariable>? Variable { get; set; }
 }
 public class PostmanUrlEncodedParameter
 {
@@ -1155,12 +1155,12 @@ public class PostmanUrlEncodedParameter
     [JsonPropertyName("disabled")]
     public bool? Disabled { get; set; }
 
-    [JsonPropertyName("key")]
-    public string Key { get; set; }
+    [JsonPropertyName("key")] 
+    public string Key { get; set; } = null!;
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("value")]
-    public string Value { get; set; }
+    public string? Value { get; set; }
 }
 
 /// <summary>
@@ -1187,7 +1187,7 @@ public class PostmanVariable
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public string? Id { get; set; }
 
     /// <summary>
     /// A variable key is a human friendly value that identifies the variable within a
@@ -1195,14 +1195,14 @@ public class PostmanVariable
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("key")]
-    public string Key { get; set; }
+    public string? Key { get; set; }
 
     /// <summary>
     /// Variable name
     /// </summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// When set to true, indicates that this variable has been set by Postman
@@ -1223,7 +1223,7 @@ public class PostmanVariable
     /// replaced by this value, when say running a set of requests from a collection
     /// </summary>
     [JsonPropertyName("value")]
-    public object Value { get; set; }
+    public object? Value { get; set; }
 }
 internal static class PostmanConverter
 {
@@ -2039,4 +2039,3 @@ internal class PostmanIsoDateTimeOffsetConverter : JsonConverter<DateTimeOffset>
         writer.WriteStringValue(text);
     }
 }
-#pragma warning restore CS8618
